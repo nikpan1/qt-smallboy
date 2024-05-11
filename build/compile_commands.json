@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/nikodem-ub1/github/qt-smallboy/build",
+  "command": "/usr/bin/c++ -o CMakeFiles/qt-smallboy.dir/main.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/main.cpp",
+  "file": "/home/nikodem-ub1/github/qt-smallboy/main.cpp"
+}
+]
