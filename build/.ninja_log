@@ -1,3 +1,12 @@
 # ninja log v5
-1	292	1715465129047125703	CMakeFiles/qt-smallboy.dir/main.cpp.o	5afeabd2bd5753d7
-293	445	1715465129197125702	qt-smallboy	f5a93a051fc342f5
+0	1286	1715468348300031830	CMakeFiles/qt-smallboy.dir/main.cpp.o	1e9019defa0d4f4a
+1437	1873	1715468425170031708	qt-smallboy	a01ad9560318cfc6
+49	59	1715468307860031894	qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp	6154e33b3a61dce2
+1	179	1715468423470031710	qt-smallboy_autogen/timestamp	4a57ef5619b07595
+1	179	1715468423470031710	qt-smallboy_autogen/mocs_compilation.cpp	4a57ef5619b07595
+1	179	1715468423470031710	/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/timestamp	4a57ef5619b07595
+1	179	1715468423470031710	/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/mocs_compilation.cpp	4a57ef5619b07595
+49	59	1715468307860031894	/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp	6154e33b3a61dce2
+179	1298	1715468424590031709	CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/mocs_compilation.cpp.o	bfd175b49c42e7bf
+59	105	1715468307900031894	CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp.o	c750fcde3c64639b
+179	1437	1715468424730031708	CMakeFiles/qt-smallboy.dir/mainwindow.cpp.o	dc22cfde6e7e3154
