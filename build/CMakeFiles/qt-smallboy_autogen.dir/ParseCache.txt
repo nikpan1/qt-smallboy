@@ -3,6 +3,7 @@
  mmc:Q_OBJECT
  mdp:/home/nikodem-ub1/github/qt-smallboy/mainwindow.h
  mdp:/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/moc_predefs.h
+ mdp:/home/nikodem-ub1/github/qt-smallboy/playerwidget.h
  mdp:/usr/include/asm-generic/errno-base.h
  mdp:/usr/include/asm-generic/errno.h
  mdp:/usr/include/assert.h
@@ -235,6 +236,7 @@
  mdp:/usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h
  mdp:/usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  mdp:/usr/include/x86_64-linux-gnu/gnu/stubs.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractitemmodel.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h
@@ -258,7 +260,9 @@
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qline.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qlogging.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qmargins.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qmetatype.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h
@@ -273,6 +277,7 @@
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qregexp.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qregularexpression.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qscopedpointer.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h
@@ -288,6 +293,7 @@
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qsystemdetection.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qtcore-config.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qtypeinfo.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qvarlengtharray.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h
@@ -312,10 +318,39 @@
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtGui/qtransform.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtGui/qvalidator.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QComboBox
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFormLayout
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFrame
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLabel
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLayout
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QPushButton
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QScrollArea
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractitemdelegate.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractscrollarea.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractslider.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractspinbox.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qboxlayout.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcombobox.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qformlayout.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qframe.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgridlayout.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlabel.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayout.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayoutitem.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qrubberband.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollarea.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qslider.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstyle.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstyleoption.h
+ mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtabbar.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtabwidget.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h
  mdp:/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h

@@ -585,7 +585,7 @@ build qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp | ${cmake_ninja_workdir}q
 #############################################
 # Phony custom command for CMakeFiles/qt-smallboy_autogen_timestamp_deps
 
-build CMakeFiles/qt-smallboy_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/qt-smallboy_autogen_timestamp_deps: phony /usr/lib/qt5/bin/moc /usr/lib/qt5/bin/uic /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.3
+build CMakeFiles/qt-smallboy_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/qt-smallboy_autogen_timestamp_deps: phony /usr/lib/qt5/bin/uic /usr/lib/qt5/bin/moc /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.3
 
 
 #############################################

@@ -1,3 +1,7 @@
+#ifndef PLAYERWIDGET_H
+#define PLAYERWIDGET_H
+
+
 #include <QWidget>
 #include <QFrame>
 #include <QFormLayout>
@@ -58,3 +62,6 @@ private:
 
     }
 };
+
+
+#endif // PLAYERWIDGET_H

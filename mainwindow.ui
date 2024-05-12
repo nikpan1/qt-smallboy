@@ -152,7 +152,7 @@
              <x>0</x>
              <y>0</y>
              <width>798</width>
-             <height>28</height>
+             <height>18</height>
             </rect>
            </property>
            <property name="sizePolicy">
@@ -161,18 +161,7 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <widget class="playerwidget" name="frame">
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <layout class="QVBoxLayout" name="verticalLayout_2"/>
           </widget>
          </widget>
         </item>
@@ -189,14 +178,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>playerwidget</class>
-   <extends>QFrame</extends>
-   <header location="global">playerwidget.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>

@@ -23,7 +23,6 @@
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include <playerwidget.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -50,10 +49,9 @@ public:
     QPushButton *StartGameW;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout_5;
-    QScrollArea *scrollArea;
+    QScrollArea *playerList;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_2;
-    playerwidget *frame;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -165,29 +163,22 @@ public:
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
-        scrollArea = new QScrollArea(verticalLayoutWidget);
-        scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
-        scrollArea->setMinimumSize(QSize(0, 450));
-        scrollArea->setWidgetResizable(true);
+        playerList = new QScrollArea(verticalLayoutWidget);
+        playerList->setObjectName(QString::fromUtf8("playerList"));
+        playerList->setMinimumSize(QSize(0, 450));
+        playerList->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 798, 28));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 798, 18));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        frame = new playerwidget(scrollAreaWidgetContents);
-        frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setFrameShape(QFrame::StyledPanel);
-        frame->setFrameShadow(QFrame::Raised);
+        playerList->setWidget(scrollAreaWidgetContents);
 
-        verticalLayout_2->addWidget(frame);
-
-        scrollArea->setWidget(scrollAreaWidgetContents);
-
-        verticalLayout_5->addWidget(scrollArea);
+        verticalLayout_5->addWidget(playerList);
 
         splitter->addWidget(verticalLayoutWidget);
 

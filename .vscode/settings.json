@@ -1,6 +1,7 @@
 {
     "cmake.configureOnOpen": false,
     "files.associations": {
-        "qvboxlayout": "cpp"
+        "qvboxlayout": "cpp",
+        "qmainwindow": "cpp"
     }
 }
