@@ -9,6 +9,7 @@
 #include <QComboBox>
 #include <QPushButton>
 
+#include <vector>
 
 class playerwidget : public QFrame {
     Q_OBJECT
@@ -31,18 +32,25 @@ private:
     QLabel *emptyLabel;
     QComboBox *playerMove;
     QPushButton *removePlayer;
+    std::vector<QLabel*> stats;
 
     void setupUi() {
+        this->setLineWidth(3);
+        this->setFrameShape(QFrame::Shape::Box);
+
+
         QFormLayout *layout = new QFormLayout(this);
 
         playerName = new QLabel(this);
         playerNum = new QLabel(this);
         emptyLabel = new QLabel(this);
         playerMove = new QComboBox(this);
-        playerMove->addItem("a");
-        playerMove->addItem("b");
-        playerMove->addItem("c");
-        playerMove->addItem("d");
+        playerMove->addItem("Szacun");
+        playerMove->addItem("Kasa");
+        playerMove->addItem("BMW");
+        playerMove->addItem("Haracz");
+        playerMove->setCurrentIndex(0);
+
         removePlayer = new QPushButton("Remove Player", this);
 
         layout->addRow("Player Name:", playerName);
@@ -52,11 +60,16 @@ private:
         layout->addRow(removePlayer);
 
         // Add additional labels in the second column
+        for (int i = 0; i < 8; ++i) {
+            QLabel* lb = new QLabel();
+            stats.push_back(lb);
+        }
+
         layout->addRow("Zasoby:", new QLabel(this));
-        layout->addRow("Szacun:", new QLabel(this));
-        layout->addRow("Kasa:", new QLabel(this));
-        layout->addRow("BMW:", new QLabel(this));
-        layout->addRow("Haracz:", new QLabel(this));
+        layout->addRow("Szacun:", stats[0]);
+        layout->addRow("Kasa:", stats[1]);
+        layout->addRow("BMW:", stats[2]);
+        layout->addRow("Haracz:", stats[3]);
 
         setLayout(layout);
 
