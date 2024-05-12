@@ -1,22 +1,22 @@
 [
 {
   "directory": "/home/nikodem-ub1/github/qt-smallboy/build",
-  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++  -Wall -fPIC -o CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/mocs_compilation.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/mocs_compilation.cpp",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/nikodem-ub1/github/qt-smallboy/build -I/home/nikodem-ub1/github/qt-smallboy -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++  -Wall -fPIC -o CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/mocs_compilation.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/mocs_compilation.cpp",
   "file": "/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/mocs_compilation.cpp"
 },
 {
   "directory": "/home/nikodem-ub1/github/qt-smallboy/build",
-  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++  -Wall -fPIC -o CMakeFiles/qt-smallboy.dir/main.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/main.cpp",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/nikodem-ub1/github/qt-smallboy/build -I/home/nikodem-ub1/github/qt-smallboy -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++  -Wall -fPIC -o CMakeFiles/qt-smallboy.dir/main.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/main.cpp",
   "file": "/home/nikodem-ub1/github/qt-smallboy/main.cpp"
 },
 {
   "directory": "/home/nikodem-ub1/github/qt-smallboy/build",
-  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++  -Wall -fPIC -o CMakeFiles/qt-smallboy.dir/mainwindow.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/mainwindow.cpp",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/nikodem-ub1/github/qt-smallboy/build -I/home/nikodem-ub1/github/qt-smallboy -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++  -Wall -fPIC -o CMakeFiles/qt-smallboy.dir/mainwindow.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/mainwindow.cpp",
   "file": "/home/nikodem-ub1/github/qt-smallboy/mainwindow.cpp"
 },
 {
   "directory": "/home/nikodem-ub1/github/qt-smallboy/build",
-  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++  -Wall -fPIC -o CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/nikodem-ub1/github/qt-smallboy/build -I/home/nikodem-ub1/github/qt-smallboy -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++  -Wall -fPIC -o CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp",
   "file": "/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp"
 }
 ]

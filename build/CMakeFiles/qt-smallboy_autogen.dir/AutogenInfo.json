@@ -92,6 +92,12 @@
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
+		],
+		[
+			"/home/nikodem-ub1/github/qt-smallboy/playerwidget.h",
+			"MU",
+			"EWIEGA46WW/moc_playerwidget.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -107,6 +113,8 @@
 	],
 	"MOC_INCLUDES" : 
 	[
+		"/home/nikodem-ub1/github/qt-smallboy/build",
+		"/home/nikodem-ub1/github/qt-smallboy",
 		"/usr/include/x86_64-linux-gnu/qt5",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui",

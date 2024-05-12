@@ -221,7 +221,7 @@ build CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/mocs_compilation.cpp.o: CXX
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
   DEP_FILE = CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/mocs_compilation.cpp.o.d
   FLAGS = -Wall -fPIC
-  INCLUDES = -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  INCLUDES = -I/home/nikodem-ub1/github/qt-smallboy/build -I/home/nikodem-ub1/github/qt-smallboy -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
   OBJECT_DIR = CMakeFiles/qt-smallboy.dir
   OBJECT_FILE_DIR = CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen
 
@@ -229,7 +229,7 @@ build CMakeFiles/qt-smallboy.dir/main.cpp.o: CXX_COMPILER__qt-smallboy_Debug /ho
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
   DEP_FILE = CMakeFiles/qt-smallboy.dir/main.cpp.o.d
   FLAGS = -Wall -fPIC
-  INCLUDES = -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  INCLUDES = -I/home/nikodem-ub1/github/qt-smallboy/build -I/home/nikodem-ub1/github/qt-smallboy -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
   OBJECT_DIR = CMakeFiles/qt-smallboy.dir
   OBJECT_FILE_DIR = CMakeFiles/qt-smallboy.dir
 
@@ -237,7 +237,7 @@ build CMakeFiles/qt-smallboy.dir/mainwindow.cpp.o: CXX_COMPILER__qt-smallboy_Deb
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
   DEP_FILE = CMakeFiles/qt-smallboy.dir/mainwindow.cpp.o.d
   FLAGS = -Wall -fPIC
-  INCLUDES = -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  INCLUDES = -I/home/nikodem-ub1/github/qt-smallboy/build -I/home/nikodem-ub1/github/qt-smallboy -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
   OBJECT_DIR = CMakeFiles/qt-smallboy.dir
   OBJECT_FILE_DIR = CMakeFiles/qt-smallboy.dir
 
@@ -245,7 +245,7 @@ build CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cp
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
   DEP_FILE = CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp.o.d
   FLAGS = -Wall -fPIC
-  INCLUDES = -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  INCLUDES = -I/home/nikodem-ub1/github/qt-smallboy/build -I/home/nikodem-ub1/github/qt-smallboy -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
   OBJECT_DIR = CMakeFiles/qt-smallboy.dir
   OBJECT_FILE_DIR = CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/EWIEGA46WW
 
