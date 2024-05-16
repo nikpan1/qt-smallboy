@@ -55,7 +55,7 @@ private:
 
         layout->addRow("Player Name:", playerName);
         layout->addRow("Player Number:", playerNum);
-        layout->addRow("Empty:", emptyLabel);
+        layout->addRow(" ", emptyLabel);
         layout->addRow("Player Move:", playerMove);
         layout->addRow(removePlayer);
 
