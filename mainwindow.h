@@ -7,6 +7,7 @@
 #include "playerwidget.h"
 #include "gameserver.h"
 #include "gameclient.h"
+#include "player.h"
 
 namespace Ui {
 class MainWindow;
@@ -28,6 +29,7 @@ private slots:
     void on_pushButton_StartGameW_clicked();
 
 private:
+    std::vector<player> players;
     Ui::MainWindow *ui;
     QComboBox* playerTypeW;
 

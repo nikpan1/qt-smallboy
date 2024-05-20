@@ -1,22 +1,22 @@
 {
-	"BUILD_DIR" : "/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen",
-	"CMAKE_BINARY_DIR" : "/home/nikodem-ub1/github/qt-smallboy/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/nikodem-ub1/github/qt-smallboy/build",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/nikodem-ub1/github/qt-smallboy",
-	"CMAKE_SOURCE_DIR" : "/home/nikodem-ub1/github/qt-smallboy",
-	"INCLUDE_DIR" : "/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include",
+	"BUILD_DIR" : "/home/nikodem/github/qt-smallboy/build/qt-smallboy_autogen",
+	"CMAKE_BINARY_DIR" : "/home/nikodem/github/qt-smallboy/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/nikodem/github/qt-smallboy/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/nikodem/github/qt-smallboy",
+	"CMAKE_SOURCE_DIR" : "/home/nikodem/github/qt-smallboy",
+	"INCLUDE_DIR" : "/home/nikodem/github/qt-smallboy/build/qt-smallboy_autogen/include",
 	"INPUTS" : 
 	[
-		"/home/nikodem-ub1/github/qt-smallboy/resources/helloworld-transparent.png"
+		"/home/nikodem/github/qt-smallboy/resources/helloworld-transparent.png"
 	],
-	"LOCK_FILE" : "/home/nikodem-ub1/github/qt-smallboy/build/CMakeFiles/qt-smallboy_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"LOCK_FILE" : "/home/nikodem/github/qt-smallboy/build/CMakeFiles/qt-smallboy_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,
 	"OPTIONS" : [ "-name", "resources" ],
 	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
 	"OUTPUT_NAME" : "qrc_resources.cpp",
-	"RCC_EXECUTABLE" : "/usr/lib/qt5/bin/rcc",
+	"RCC_EXECUTABLE" : "/nix/store/7dlysyzp7ww71w9l6abfzmzydis9p7jz-qtbase-5.15.12-dev/bin/rcc",
 	"RCC_LIST_OPTIONS" : [ "--list" ],
-	"SETTINGS_FILE" : "/home/nikodem-ub1/github/qt-smallboy/build/CMakeFiles/qt-smallboy_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
-	"SOURCE" : "/home/nikodem-ub1/github/qt-smallboy/resources.qrc",
+	"SETTINGS_FILE" : "/home/nikodem/github/qt-smallboy/build/CMakeFiles/qt-smallboy_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/nikodem/github/qt-smallboy/resources.qrc",
 	"VERBOSITY" : 0
 }
