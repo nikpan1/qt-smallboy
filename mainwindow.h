@@ -29,18 +29,17 @@ private slots:
     void on_pushButton_StartGameW_clicked();
 
 private:
-    std::vector<player> players;
     Ui::MainWindow *ui;
     QComboBox* playerTypeW;
 
     QString ipAddress = "172.27.34.251";
     quint16 port = 6547;
-
-    gameserver* _gameserver;
-    std::vector<gameclient*> _gameclients;
+    Gameserver* gameserver;
+    std::vector<Gameclient*> gameclients;
 
     std::vector<playerwidget*> players;
     QScrollArea* playerlistArea;
+
 };
 
 #endif // MAINWINDOW_H

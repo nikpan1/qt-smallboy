@@ -6,12 +6,12 @@
 #include <QDataStream>
 #include <QTimer>
 
-class gameclient : public QObject
+class Gameclient : public QObject
 {
     Q_OBJECT
 
 public:
-    gameclient(const QString hostAddress, int portVal, QObject *parent = 0);
+    Gameclient(const QString hostAddress, int portVal, QObject *parent = 0);
 
     QTcpSocket *tcpSocket;
     bool getStatus();

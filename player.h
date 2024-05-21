@@ -21,11 +21,11 @@ public:
     void AddSzacun(int value);
     void AddKasa(int value);
 
-    int UseBMW();
+    void UseBMW();
 
 private:
     QString id;
     int szacun = 0, kasa = 0, bmw = 0;
 };
 
-    // enum picked action -> iterate by every player; before it just iterate through clients to update data via json     
+#endif

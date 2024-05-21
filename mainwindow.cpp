@@ -26,10 +26,10 @@ MainWindow::MainWindow(QWidget *parent) :
     playerTypeW->setCurrentIndex(0);
 
     // Initialize server
-    _gameserver = new gameserver(this);
-    //connect(_gameserver, &gameserver::gotNewMesssage, this, &MainWindow::gotNewMessage);
-    connect(_gameserver->tcpServer, &QTcpServer::newConnection, this, &MainWindow::smbConnectedToServer);
-    connect(_gameserver, &gameserver::smbDisconnected, this, &MainWindow::smbDisconnectedFromServer);
+    gameserver = new Gameserver(this);
+    //connect(gameserver, &Gameserver::gotNewMesssage, this, &MainWindow::gotNewMessage);
+    connect(gameserver->tcpServer, &QTcpServer::newConnection, this, &MainWindow::smbConnectedToServer);
+    connect(gameserver, &Gameserver::smbDisconnected, this, &MainWindow::smbDisconnectedFromServer);
 }
 
 MainWindow::~MainWindow()
@@ -46,14 +46,21 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_pushButton_StartGameW_clicked()
 {
-    if(!ui->isHost->isChecked()) return;
 
-    if (!_gameserver->tcpServer->listen(QHostAddress::Any, 6547))
+    if(!ui->isHost->isChecked()) {
+        QString addr = ui->IPaddressW->text();
+        qint16 port = ui->PortW->text().toShort();
+
+        ui->log->setText("Client connnecting: " + addr + ":" + QString::number(port));
+        
+        return;
+    }
+    if (!gameserver->tcpServer->listen(QHostAddress::Any, 6547))
     {
         ui->log->setText("Port is taken[E]");
         return;
     }
-    connect(_gameserver->tcpServer, &QTcpServer::newConnection, _gameserver, &gameserver::newConnection);
+    connect(gameserver->tcpServer, &QTcpServer::newConnection, gameserver, &Gameserver::newConnection);
     ui->log->setText("Server open");
 }
 

@@ -1,7 +1,7 @@
-/home/nikodem/github/qt-smallboy/build/CMakeFiles/qt-smallboy.dir
-/home/nikodem/github/qt-smallboy/build/CMakeFiles/package.dir
-/home/nikodem/github/qt-smallboy/build/CMakeFiles/package_source.dir
-/home/nikodem/github/qt-smallboy/build/CMakeFiles/edit_cache.dir
-/home/nikodem/github/qt-smallboy/build/CMakeFiles/rebuild_cache.dir
-/home/nikodem/github/qt-smallboy/build/CMakeFiles/qt-smallboy_autogen_timestamp_deps.dir
-/home/nikodem/github/qt-smallboy/build/CMakeFiles/qt-smallboy_autogen.dir
+/home/nikodem-ub1/github/qt-smallboy/build/CMakeFiles/qt-smallboy.dir
+/home/nikodem-ub1/github/qt-smallboy/build/CMakeFiles/package.dir
+/home/nikodem-ub1/github/qt-smallboy/build/CMakeFiles/package_source.dir
+/home/nikodem-ub1/github/qt-smallboy/build/CMakeFiles/edit_cache.dir
+/home/nikodem-ub1/github/qt-smallboy/build/CMakeFiles/rebuild_cache.dir
+/home/nikodem-ub1/github/qt-smallboy/build/CMakeFiles/qt-smallboy_autogen_timestamp_deps.dir
+/home/nikodem-ub1/github/qt-smallboy/build/CMakeFiles/qt-smallboy_autogen.dir

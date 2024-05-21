@@ -7,7 +7,7 @@
 #include <QJsonDocument>
 #include <QFile>
 #include <vector>
-#include "Player.h"
+#include "player.h"
 
 class JsonHandler : public QObject {
     Q_OBJECT

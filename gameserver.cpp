@@ -1,29 +1,29 @@
 #include "gameserver.h"
 
-gameserver::gameserver(QObject *pwgt) : QObject(pwgt), m_nNextBlockSize(0)
+Gameserver::Gameserver(QObject *pwgt) : QObject(pwgt), m_nNextBlockSize(0)
 {
     tcpServer = new QTcpServer(this);
 }
 
-QList<QTcpSocket *> gameserver::getClients()
+QList<QTcpSocket *> Gameserver::getClients()
 {
     return clients;
 }
 
-void gameserver::newConnection()
+void Gameserver::newConnection()
 {
     QTcpSocket *clientSocket = tcpServer->nextPendingConnection();
 
     connect(clientSocket, &QTcpSocket::disconnected, clientSocket, &QTcpSocket::deleteLater);
-    connect(clientSocket, &QTcpSocket::readyRead, this, &gameserver::readClient);
-    connect(clientSocket, &QTcpSocket::disconnected, this, &gameserver::gotDisconnection);
+    connect(clientSocket, &QTcpSocket::readyRead, this, &Gameserver::readClient);
+    connect(clientSocket, &QTcpSocket::disconnected, this, &Gameserver::gotDisconnection);
 
     clients << clientSocket;
 
     sendToClient(clientSocket, "Reply: connection established");
 }
 
-void gameserver::readClient()
+void Gameserver::readClient()
 {
     QTcpSocket *clientSocket = (QTcpSocket*)sender();
 
@@ -51,13 +51,13 @@ void gameserver::readClient()
     }
 }
 
-void gameserver::gotDisconnection()
+void Gameserver::gotDisconnection()
 {
     clients.removeAt(clients.indexOf((QTcpSocket*)sender()));
     emit smbDisconnected();
 }
 
-qint64 gameserver::sendToClient(QTcpSocket* socket, const QString& str)
+qint64 Gameserver::sendToClient(QTcpSocket* socket, const QString& str)
 {
     QByteArray arrBlock;
     QDataStream out(&arrBlock, QIODevice::WriteOnly);

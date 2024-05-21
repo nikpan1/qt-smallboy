@@ -1,6 +1,6 @@
 #include "gameclient.h"
 
-gameclient::gameclient(
+Gameclient::Gameclient(
         const QString hostAddress,
         int portNumber,
         QObject *parent
@@ -12,23 +12,23 @@ gameclient::gameclient(
     port = portNumber;
 
     tcpSocket = new QTcpSocket(this);
-    connect(tcpSocket, &QTcpSocket::disconnected, this, &gameclient::closeConnection);
+    connect(tcpSocket, &QTcpSocket::disconnected, this, &Gameclient::closeConnection);
 
     timeoutTimer = new QTimer();
     timeoutTimer->setSingleShot(true);
-    connect(timeoutTimer, &QTimer::timeout, this, &gameclient::connectionTimeout);
+    connect(timeoutTimer, &QTimer::timeout, this, &Gameclient::connectionTimeout);
 }
 
-void gameclient::connect2host()
+void Gameclient::connect2host()
 {
     timeoutTimer->start(3000);
 
     tcpSocket->connectToHost(host, port);
-    connect(tcpSocket, &QTcpSocket::connected, this, &gameclient::connected);
-    connect(tcpSocket, &QTcpSocket::readyRead, this, &gameclient::readyRead);
+    connect(tcpSocket, &QTcpSocket::connected, this, &Gameclient::connected);
+    connect(tcpSocket, &QTcpSocket::readyRead, this, &Gameclient::readyRead);
 }
 
-void gameclient::connectionTimeout()
+void Gameclient::connectionTimeout()
 {
     //qDebug() << tcpSocket->state();
     if(tcpSocket->state() == QAbstractSocket::ConnectingState)
@@ -38,15 +38,15 @@ void gameclient::connectionTimeout()
     }
 }
 
-void gameclient::connected()
+void Gameclient::connected()
 {
     status = true;
     emit statusChanged(status);
 }
 
-bool gameclient::getStatus() {return status;}
+bool Gameclient::getStatus() {return status;}
 
-void gameclient::readyRead()
+void Gameclient::readyRead()
 {
     QDataStream in(tcpSocket);
     //in.setVersion(QDataStream::Qt_5_10);
@@ -73,13 +73,13 @@ void gameclient::readyRead()
     }
 }
 
-//void gameclient::gotDisconnection()
+//void Gameclient::gotDisconnection()
 //{
 //    status = false;
 //    emit statusChanged(status);
 //}
 
-void gameclient::closeConnection()
+void Gameclient::closeConnection()
 {
     timeoutTimer->stop();
 

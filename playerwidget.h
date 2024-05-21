@@ -11,6 +11,8 @@
 
 #include <vector>
 
+#include "player.h"
+
 class playerwidget : public QFrame {
     Q_OBJECT
 
@@ -19,12 +21,21 @@ public:
         setupUi();
     }
 
+    //
+    //
+    Player playerData;
+    //
+    //
+
+
     // Getters for accessing widget components
     QLabel* playerNameLabel() const { return playerName; }
     QLabel* playerNumLabel() const { return playerNum; }
     QLabel* emptyLabelWidget() const { return emptyLabel; } // Renamed member function
     QComboBox* playerMoveComboBox() const { return playerMove; }
     QPushButton* removePlayerButton() const { return removePlayer; }
+
+
 
 private:
     QLabel *playerName;

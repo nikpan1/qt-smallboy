@@ -6,12 +6,12 @@
 #include <QDataStream>
 #include <QList>
 
-class gameserver : public QObject
+class Gameserver : public QObject
 {
     Q_OBJECT
 
 public:
-    gameserver(QObject *pwgt);
+    Gameserver(QObject *pwgt);
     QTcpServer *tcpServer;
     QList<QTcpSocket *> getClients();
 
