@@ -251,7 +251,7 @@ public:
         isHost->setText(QCoreApplication::translate("MainWindow", "isHost", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "Server IP address:", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "Server Port:", nullptr));
-        StartGameW->setText(QCoreApplication::translate("MainWindow", "Start Game", nullptr));
+        StartGameW->setText(QCoreApplication::translate("MainWindow", "Connect to server", nullptr));
         roundNumLabelW->setText(QCoreApplication::translate("MainWindow", "ROUND: 1", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Players", nullptr));
         PlayRoundW->setText(QCoreApplication::translate("MainWindow", "Play Round", nullptr));

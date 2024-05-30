@@ -28,7 +28,6 @@ public:
     void smbConnectedToServer();
     void smbDisconnectedFromServer();
     void gotNewMesssage(QString msg);
-    void receivedSomething(QString msg);
 
 private slots:
     void on_actionExit_triggered();
@@ -36,6 +35,9 @@ private slots:
     void on_pushButton_AddNewPlayerW_clicked();
     void onIsHostToggled(bool checked);
     void gotNewMessage(QString msg); 
+    void receivedSomething(QString msg);
+public slots:
+    void gotError(QAbstractSocket::SocketError err);
 
 private:
     Ui::MainWindow *ui;

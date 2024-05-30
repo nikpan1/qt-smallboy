@@ -19,7 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(gameserver, &Gameserver::gotNewMesssage, this, &MainWindow::gotNewMessage);
     connect(gameserver->tcpServer, &QTcpServer::newConnection, this, &MainWindow::smbConnectedToServer);
     connect(gameserver, &Gameserver::smbDisconnected, this, &MainWindow::smbDisconnectedFromServer);
-
+    
+    
     setInitialValues();
 
     playerTypeW = ui->PlayerTypeW;
@@ -52,16 +53,18 @@ void MainWindow::on_pushButton_StartGameW_clicked()
     ipAddress = ui->IPaddressW->text();
     port = ui->PortW->text().toShort();
 
-    if(!ui->isHost->isChecked()) { // connecting to a server
+    if(!ui->isHost->isChecked()) { // CLIENT 
         _DEBUG("Client connnecting: " + ipAddress + ":" + QString::number(port));
-        connect(gameclient, &Gameclient::hasReadSome, this, &MainWindow::receivedSomething);
-
+        //connect(gameclient->tcpSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(gotError(QAbstractSocket::SocketError)));
         gameclient = new Gameclient(ipAddress, port, this);
+
+
+        connect(gameclient, &Gameclient::hasReadSome, this, &MainWindow::receivedSomething);
         gameclient->connect2host();
 
         return;
     }
-    else {
+    else {  // SERVER
         auto ip = QHostAddress(ipAddress);
         if (!gameserver->tcpServer->listen(ip, port))
         {
@@ -83,6 +86,8 @@ void MainWindow::on_pushButton_AddNewPlayerW_clicked()
     players.push_back(np);
 
     // get it going -> send message to server for ip
+
+    gameserver->sendToClient(gameserver->getClients()[0], "Hello, you are connected");
 }
 
 
@@ -102,6 +107,8 @@ void MainWindow::onIsHostToggled(bool checked)
 void MainWindow::smbConnectedToServer()
 {
     _DEBUG("Somebody has connected");
+    gameserver->newConnection();
+
     // send message to this connected client
     // maybe assign unique id
 }
@@ -136,4 +143,29 @@ void MainWindow::receivedSomething(QString msg)
 void MainWindow::gotNewMessage(QString msg)
 {
     ui->log->setText(msg); 
+}
+
+void MainWindow::gotError(QAbstractSocket::SocketError err)
+{
+    //qDebug() << "got error";
+    QString strError = "unknown";
+    switch (err)
+    {
+        case 0:
+            strError = "Connection was refused";
+            break;
+        case 1:
+            strError = "Remote host closed the connection";
+            break;
+        case 2:
+            strError = "Host address was not found";
+            break;
+        case 5:
+            strError = "Connection timed out";
+            break;
+        default:
+            strError = "Unknown error";
+    }
+
+    _DEBUG("Error: " + strError);
 }

@@ -12,14 +12,25 @@ QList<QTcpSocket *> Gameserver::getClients()
 
 void Gameserver::newConnection()
 {
+        if (!tcpServer->hasPendingConnections()) {
+        qDebug() << "No pending connections";
+        return;
+    }
+    
     QTcpSocket *clientSocket = tcpServer->nextPendingConnection();
+    if(clientSocket == nullptr)
+    {
+        qDebug() << "Client socket is null";
+        return;
+    }
+
+    clients.append(clientSocket);
 
     connect(clientSocket, &QTcpSocket::disconnected, clientSocket, &QTcpSocket::deleteLater);
     connect(clientSocket, &QTcpSocket::readyRead, this, &Gameserver::readClient);
     connect(clientSocket, &QTcpSocket::disconnected, this, &Gameserver::gotDisconnection);
 
-    clients << clientSocket;
-
+    qDebug() << "New connection established";
     sendToClient(clientSocket, "Reply: connection established");
 }
 
@@ -59,14 +70,19 @@ void Gameserver::gotDisconnection()
 
 qint64 Gameserver::sendToClient(QTcpSocket* socket, const QString& str)
 {
-    QByteArray arrBlock;
-    QDataStream out(&arrBlock, QIODevice::WriteOnly);
-    //out.setVersion(QDataStream::Qt_5_10);
-    //out << quint16(0) << QTime::currentTime() << str;
-    out << quint16(0) << str;
+    if (socket && socket->isOpen()) {
+        QByteArray data = str.toUtf8();
+        socket->write(data);
+        socket->flush(); // Ensure the data is sent immediately
+    }
+}
 
-    out.device()->seek(0);
-    out << quint16(arrBlock.size() - sizeof(quint16));
-
-    return socket->write(arrBlock);
+qint64 Gameserver::sendToAllClients(const QString& str)
+{
+    qint64 result = 0;
+    for (QTcpSocket* client : clients)
+    {
+        result += sendToClient(client, str);
+    }
+    return result;
 }

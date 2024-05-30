@@ -14,12 +14,14 @@ public:
     Gameserver(QObject *pwgt);
     QTcpServer *tcpServer;
     QList<QTcpSocket *> getClients();
+    QList<QTcpSocket*> clients;
 
 public slots:
     virtual void newConnection();
     void readClient();
     void gotDisconnection();
     qint64 sendToClient(QTcpSocket *socket, const QString &str);
+    qint64 sendToAllClients(const QString &str);
 
 signals:
     void gotNewMesssage(QString msg);
@@ -27,7 +29,6 @@ signals:
 
 private:
     quint16 m_nNextBlockSize;
-    QList<QTcpSocket*> clients;
 };
 
 #endif // GAMESERVER_H
