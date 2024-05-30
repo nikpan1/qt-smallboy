@@ -13,20 +13,16 @@
 
 #include "player.h"
 
-class playerwidget : public QFrame {
+class playerwidget : public QFrame, public Player {
     Q_OBJECT
 
 public:
-    explicit playerwidget(QWidget *parent = nullptr) : QFrame(parent) {
+    explicit playerwidget(QWidget *parent = nullptr) : QFrame(parent), Player() {
         setupUi();
     }
-
-    //
-    //
-    Player playerData;
-    //
-    //
-
+    explicit playerwidget(bool _isBot, QWidget *parent = nullptr) : QFrame(parent), Player(_isBot) {
+        setupUi();
+    }
 
     // Getters for accessing widget components
     QLabel* playerNameLabel() const { return playerName; }
@@ -42,8 +38,9 @@ private:
     QLabel *playerNum;
     QLabel *emptyLabel;
     QComboBox *playerMove;
-    QPushButton *removePlayer;
+    QPushButton *removePlayer, *savePlayer;
     std::vector<QLabel*> stats;
+    bool isBot = false;
 
     void setupUi() {
         this->setLineWidth(3);
@@ -63,11 +60,12 @@ private:
         playerMove->setCurrentIndex(0);
 
         removePlayer = new QPushButton("Remove Player", this);
+        savePlayer = new QPushButton("Save Move", this);
 
-        layout->addRow("Player Name:", playerName);
-        layout->addRow("Player Number:", playerNum);
+        layout->addRow("PlayerId:", playerName);
         layout->addRow(" ", emptyLabel);
         layout->addRow("Player Move:", playerMove);
+        layout->addRow(savePlayer);
         layout->addRow(removePlayer);
 
         // Add additional labels in the second column
@@ -76,14 +74,30 @@ private:
             stats.push_back(lb);
         }
 
-        layout->addRow("Zasoby:", new QLabel(this));
+        updatePlayerData();
+
+
+        layout->addRow("Zasoby", new QLabel(this));
         layout->addRow("Szacun:", stats[0]);
         layout->addRow("Kasa:", stats[1]);
         layout->addRow("BMW:", stats[2]);
         layout->addRow("Haracz:", stats[3]);
-
         setLayout(layout);
+    }
 
+public:
+    void updatePlayerData()
+    {
+        playerName->setText(QString::number(this->id));
+        stats[0]->setText(QString::number(this->szacun));
+        stats[1]->setText(QString::number(this->kasa));
+        stats[2]->setText(QString::number(this->bmw));
+        stats[3]->setText(QString::number(this->haracz));
+    }
+
+    void disableInteractions()
+    {
+        this->setEnabled(false);
     }
 };
 

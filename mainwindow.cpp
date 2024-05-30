@@ -6,35 +6,36 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->StartGameW, &QPushButton::clicked, this, &MainWindow::on_pushButton_StartGameW_clicked);
 
+    // Initialize server
+    gameserver = new Gameserver(this);
+
+
+    // Connecting signals
+    connect(ui->StartGameW, &QPushButton::clicked, this, &MainWindow::on_pushButton_StartGameW_clicked);
+    //connect(gameserver, &Gameserver::gotNewMesssage, this, &MainWindow::gotNewMessage);
+    connect(gameserver->tcpServer, &QTcpServer::newConnection, this, &MainWindow::smbConnectedToServer);
+    connect(gameserver, &Gameserver::smbDisconnected, this, &MainWindow::smbDisconnectedFromServer);
+
+    setInitialValues();
+
+    playerTypeW = ui->PlayerTypeW;
     playerlistArea = ui->playerList;
-    
+
+
+    // this is temporary 
     for (int i = 0; i < 8; ++i) {
         playerwidget* np = new playerwidget();
          
         playerlistArea->widget()->layout()->addWidget(np);
         players.push_back(np);
     }
-
-
-    // Setup QCombobox for adding new players
-    playerTypeW = ui->PlayerTypeW;
-    playerTypeW->addItem("Local");
-    playerTypeW->addItem("Bot");
-    playerTypeW->addItem("Remote");
-    playerTypeW->setCurrentIndex(0);
-
-    // Initialize server
-    gameserver = new Gameserver(this);
-    //connect(gameserver, &Gameserver::gotNewMesssage, this, &MainWindow::gotNewMessage);
-    connect(gameserver->tcpServer, &QTcpServer::newConnection, this, &MainWindow::smbConnectedToServer);
-    connect(gameserver, &Gameserver::smbDisconnected, this, &MainWindow::smbDisconnectedFromServer);
+    players[0]->disableInteractions();
+    // this is temporary
 }
 
 MainWindow::~MainWindow()
 {
-
     delete ui;
 }
 
@@ -51,17 +52,29 @@ void MainWindow::on_pushButton_StartGameW_clicked()
         QString addr = ui->IPaddressW->text();
         qint16 port = ui->PortW->text().toShort();
 
-        ui->log->setText("Client connnecting: " + addr + ":" + QString::number(port));
+        _DEBUG("Client connnecting: " + addr + ":" + QString::number(port));
         
         return;
     }
     if (!gameserver->tcpServer->listen(QHostAddress::Any, 6547))
     {
-        ui->log->setText("Port is taken[E]");
+        _DEBUG("Port is taken[E]");
         return;
     }
     connect(gameserver->tcpServer, &QTcpServer::newConnection, gameserver, &Gameserver::newConnection);
-    ui->log->setText("Server open");
+    _DEBUG("Server open");
+
+    // rename button to - Stop Server
+}
+
+void MainWindow::on_pushButton_AddNewPlayerW_clicked()
+{   
+    playerwidget* np = new playerwidget();
+         
+    playerlistArea->widget()->layout()->addWidget(np);
+    players.push_back(np);
+    
+
 }
 
 /*
@@ -85,16 +98,25 @@ void MainWindow::on_pushButton_stopServer_clicked()
 
 void MainWindow::smbConnectedToServer()
 {
-    ui->log->setText("Somebody has connected");
+    _DEBUG("Somebody has connected");
 }
 
 void MainWindow::smbDisconnectedFromServer()
 {
-    ui->log->setText("Somebody has disconnected");
-    
+    _DEBUG("Somebody has disconnected");
 }
 
 void MainWindow::gotNewMesssage(QString msg)
 {
-    ui->log->setText(QString("New message: %1").arg(msg));
+    _DEBUG(QString("New message: %1").arg(msg));
+}
+
+void MainWindow::setInitialValues() 
+{
+    ui->PlayerTypeW->addItem("Local");
+    ui->PlayerTypeW->addItem("Bot");
+    ui->PlayerTypeW->setCurrentIndex(0);
+
+    ui->IPaddressW->setText("172.27.34.251");
+    ui->PortW->setText("6537");
 }

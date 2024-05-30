@@ -85,14 +85,19 @@
 		"/usr/share/cmake-3.22/Modules/CPack.cmake",
 		"/usr/share/cmake-3.22/Modules/CPackComponent.cmake",
 		"/usr/share/cmake-3.22/Templates/CPackConfig.cmake.in",
-		"/usr/share/cmake-3.22/Templates/CPackConfig.cmake.in",
-		"/home/nikodem-ub1/github/qt-smallboy/resources.qrc"
+		"/usr/share/cmake-3.22/Templates/CPackConfig.cmake.in"
 	],
 	"CMAKE_SOURCE_DIR" : "/home/nikodem-ub1/github/qt-smallboy",
 	"DEP_FILE" : "/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "qt-smallboy_autogen/timestamp",
 	"HEADERS" : 
 	[
+		[
+			"/home/nikodem-ub1/github/qt-smallboy/Debug.h",
+			"MU",
+			"EWIEGA46WW/moc_Debug.cpp",
+			null
+		],
 		[
 			"/home/nikodem-ub1/github/qt-smallboy/JsonHandler.h",
 			"MU",

@@ -1,5 +1,6 @@
 qt-smallboy_autogen/timestamp: \
 	/home/nikodem-ub1/github/qt-smallboy/CMakeLists.txt \
+	/home/nikodem-ub1/github/qt-smallboy/Debug.h \
 	/home/nikodem-ub1/github/qt-smallboy/JsonHandler.cpp \
 	/home/nikodem-ub1/github/qt-smallboy/JsonHandler.h \
 	/home/nikodem-ub1/github/qt-smallboy/build/CMakeFiles/3.22.1/CMakeCCompiler.cmake \
@@ -16,7 +17,6 @@ qt-smallboy_autogen/timestamp: \
 	/home/nikodem-ub1/github/qt-smallboy/player.cpp \
 	/home/nikodem-ub1/github/qt-smallboy/player.h \
 	/home/nikodem-ub1/github/qt-smallboy/playerwidget.h \
-	/home/nikodem-ub1/github/qt-smallboy/resources.qrc \
 	/usr/include/asm-generic/errno-base.h \
 	/usr/include/asm-generic/errno.h \
 	/usr/include/assert.h \

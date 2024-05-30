@@ -21,7 +21,7 @@ QJsonArray JsonHandler::playersToJson(const std::vector<Player> &players) {
 
 Player JsonHandler::jsonToPlayer(const QJsonObject &json) {
     Player player;
-    player.SetID(json["id"].toString());
+    player.SetID(json["id"].toInt());
     player.SetSzacun(json["szacun"].toInt());
     player.SetKasa(json["kasa"].toInt());
     player.SetBMW(json["bmw"].toInt());

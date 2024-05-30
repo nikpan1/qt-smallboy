@@ -8,6 +8,8 @@
 #include "gameserver.h"
 #include "gameclient.h"
 #include "player.h"
+#include "Debug.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -27,7 +29,7 @@ public:
 private slots:
     void on_actionExit_triggered();
     void on_pushButton_StartGameW_clicked();
-
+    void on_pushButton_AddNewPlayerW_clicked();
 private:
     Ui::MainWindow *ui;
     QComboBox* playerTypeW;
@@ -39,7 +41,7 @@ private:
 
     std::vector<playerwidget*> players;
     QScrollArea* playerlistArea;
-
+    void setInitialValues();
 };
 
 #endif // MAINWINDOW_H

@@ -1,5 +1,6 @@
 /home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/EWIEGA46WW/moc_mainwindow.cpp: /home/nikodem-ub1/github/qt-smallboy/mainwindow.h \
   /home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/moc_predefs.h \
+  /home/nikodem-ub1/github/qt-smallboy/Debug.h \
   /home/nikodem-ub1/github/qt-smallboy/gameclient.h \
   /home/nikodem-ub1/github/qt-smallboy/gameserver.h \
   /home/nikodem-ub1/github/qt-smallboy/player.h \

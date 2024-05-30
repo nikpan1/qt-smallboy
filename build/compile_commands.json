@@ -33,10 +33,5 @@
   "directory": "/home/nikodem-ub1/github/qt-smallboy/build",
   "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -I/home/nikodem-ub1/github/qt-smallboy/build -I/home/nikodem-ub1/github/qt-smallboy -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork  -Wall -g -fPIC -o CMakeFiles/qt-smallboy.dir/JsonHandler.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/JsonHandler.cpp",
   "file": "/home/nikodem-ub1/github/qt-smallboy/JsonHandler.cpp"
-},
-{
-  "directory": "/home/nikodem-ub1/github/qt-smallboy/build",
-  "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -I/home/nikodem-ub1/github/qt-smallboy/build -I/home/nikodem-ub1/github/qt-smallboy -I/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork  -Wall -g -fPIC -o CMakeFiles/qt-smallboy.dir/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp.o -c /home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp",
-  "file": "/home/nikodem-ub1/github/qt-smallboy/build/qt-smallboy_autogen/EWIEGA46WW/qrc_resources.cpp"
 }
 ]
