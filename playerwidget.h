@@ -53,10 +53,13 @@ private:
         playerNum = new QLabel(this);
         emptyLabel = new QLabel(this);
         playerMove = new QComboBox(this);
+
+
         playerMove->addItem("Szacun");
         playerMove->addItem("Kasa");
         playerMove->addItem("BMW");
-        playerMove->addItem("Haracz");
+        if(CanUseHaracz()) playerMove->addItem("Haracz");
+        
         playerMove->setCurrentIndex(0);
 
         removePlayer = new QPushButton("Remove Player", this);

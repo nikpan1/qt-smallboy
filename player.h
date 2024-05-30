@@ -3,6 +3,8 @@
 
 #include <QString>
 #include "Debug.h"
+#include <map>
+
 
 enum playerAction {
     lans = 0,
@@ -11,6 +13,17 @@ enum playerAction {
     bmw = 3,
     iwan = 4
 };
+
+// for converting string into enum
+// assumption: there will be used only valid keys
+const std::unordered_map<std::string, playerAction> PLAYERACTIONS_CONV = {
+    {"lans", playerAction::lans},
+    {"doRoboty", playerAction::doRoboty},
+    {"haracz", playerAction::haracz},
+    {"bmw", playerAction::bmw},
+    {"iwan", playerAction::iwan}
+};
+
 
 class Player {
 public:
@@ -32,6 +45,8 @@ public:
     void AddSzacun(int value);
     void AddKasa(int value);
 
+    bool CanUseHaracz();
+
     virtual void Play(std::vector<Player*> players);
     // if ___ < 0 then ___ = 0
     virtual void relu();
@@ -40,7 +55,7 @@ public:
     Player(bool _isBot);
 
 protected:
-    int id = -1;
+    int id = -1; // at initialization it always has -1, later is set by the server
     bool isBot = false;
     playerAction action = playerAction::lans;
 

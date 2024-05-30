@@ -5,6 +5,7 @@
         "qmainwindow": "cpp",
         "qtimer": "cpp",
         "qdatastream": "cpp",
-        "qstring": "cpp"
+        "qstring": "cpp",
+        "new": "cpp"
     }
 }

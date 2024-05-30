@@ -28,6 +28,8 @@ private slots:
     void readyRead();
     void connected();
     void connectionTimeout();
+public:
+    void sendToServer(const QString& msg);
 
 private:
     QString host;

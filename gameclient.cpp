@@ -108,3 +108,19 @@ void Gameclient::closeConnection()
         emit statusChanged(status);
     }
 }
+
+void Gameclient::sendToServer(const QString& message)
+{
+    if(tcpSocket->state() == QAbstractSocket::ConnectedState)
+    {
+        QByteArray block;
+        QDataStream out(&block, QIODevice::WriteOnly);
+        out.setVersion(QDataStream::Qt_5_10);
+        out << quint16(0) << message;
+        
+        out.device()->seek(0);
+        out << quint16(block.size() - sizeof(quint16));
+        
+        tcpSocket->write(block);
+    }
+}

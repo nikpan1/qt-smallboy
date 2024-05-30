@@ -7,6 +7,7 @@ Player::Player() {
 
 Player::Player(bool _isBot) {
     isBot = _isBot;
+    if (isBot) randomAction();
 }
 
 // Getter methods
@@ -55,6 +56,9 @@ void Player::AddKasa(int value) {
     kasa += value;
 }
 
+bool Player::CanUseHaracz() {
+    return kasa >= 4;
+}
 
 void Player::Play(std::vector<Player*> players) {
     // 1. HARACZ 
@@ -83,7 +87,7 @@ void Player::Play(std::vector<Player*> players) {
             break;
         case playerAction::haracz:
             // check if is possible to use haracz
-            if(kasa >= 4) {
+            if(CanUseHaracz()) {
                 kasa -= 4;
                 haracz += 1; 
             }
@@ -103,16 +107,15 @@ void Player::Play(std::vector<Player*> players) {
             break;
     }
 
-    // iteruj po graczach
-
-    // iteruj po wszystkich zasobach jak < 0 to = 0
-    // funkcja relu po skończonej rundzie 
+    if(isBot) {
+        randomAction();
+    }
 }
 
 void Player::randomAction() {
     playerAction rdActon = static_cast<playerAction>(rand() % 5);
     if(rdActon == playerAction::haracz) {
-        if(kasa < 4) {
+        if(CanUseHaracz()) {
             randomAction();
         }
     }

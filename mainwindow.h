@@ -3,7 +3,10 @@
 
 #include <QMainWindow>
 #include <QScrollArea>
+#include <QCheckBox>
+
 #include <vector>
+
 #include "playerwidget.h"
 #include "gameserver.h"
 #include "gameclient.h"
@@ -30,13 +33,19 @@ private slots:
     void on_actionExit_triggered();
     void on_pushButton_StartGameW_clicked();
     void on_pushButton_AddNewPlayerW_clicked();
+    void onIsHostToggled(bool checked);
+    void gotNewMessage(QString msg);
+
 private:
     Ui::MainWindow *ui;
     QComboBox* playerTypeW;
-
+    
+    // default networking values
     QString ipAddress = "172.27.34.251";
     quint16 port = 6547;
+
     Gameserver* gameserver;
+    Gameclient* gameclient;
     std::vector<Gameclient*> gameclients;
 
     std::vector<playerwidget*> players;
