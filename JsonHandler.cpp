@@ -2,86 +2,45 @@
 
 JsonHandler::JsonHandler(QObject *parent) : QObject(parent) {}
 
-QJsonObject JsonHandler::playerToJson(const Player &player) {
-    QJsonObject json;
-    json["id"] = player.GetID();
-    json["szacun"] = player.GetSzacun();
-    json["kasa"] = player.GetKasa();
-    json["bmw"] = player.GetBMW();
-    return json;
-}
-
-QJsonArray JsonHandler::playersToJson(const std::vector<Player> &players) {
+QJsonArray JsonHandler::playersToJson(std::vector<Player> players) {
     QJsonArray jsonArray;
-    for (const auto &player : players) {
-        jsonArray.append(playerToJson(player));
+    for (auto& player : players) {
+        jsonArray.append(player.toJson());
     }
     return jsonArray;
 }
 
-Player JsonHandler::jsonToPlayer(const QJsonObject &json) {
-    Player player;
-    player.SetID(json["id"].toInt());
-    player.SetSzacun(json["szacun"].toInt());
-    player.SetKasa(json["kasa"].toInt());
-    player.SetBMW(json["bmw"].toInt());
-    return player;
+void JsonHandler::jsonToPlayers(QJsonArray jsonArray, std::vector<Player>& players) {
+    long unsigned int i = 0;
+
+    for (const auto& jsonValue : jsonArray) {
+        if (jsonValue.isObject()) {
+            if(i >= players.size()) {
+                players.push_back(Player());
+            }
+
+            players[i].fromJson(jsonValue.toObject());
+            i ++;
+        }
+    }
 }
 
-std::vector<Player> JsonHandler::jsonToPlayers(const QJsonArray &jsonArray) {
-    std::vector<Player> players;
-    for (const auto &jsonValue : jsonArray) {
-        players.push_back(jsonToPlayer(jsonValue.toObject()));
-    }
-    return players;
+void JsonHandler::jsonToPlayers(QString jsonArray, std::vector<Player>& players)
+{
+    QJsonArray jsonArr = stringToJSONArray(jsonArray);
+    jsonToPlayers(jsonArr, players);
 }
 
-bool JsonHandler::savePlayerToFile(const Player &player, const QString &filePath) {
-    QJsonDocument doc(playerToJson(player));
-    QFile file(filePath);
-    if (!file.open(QIODevice::WriteOnly)) {
-        return false;
+
+QJsonArray JsonHandler::stringToJSONArray(const QString& jsonString) {
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonString.toUtf8());
+    if (!jsonDocument.isArray()) {
+        return QJsonArray();
     }
-    file.write(doc.toJson());
-    file.close();
-    return true;
+    return jsonDocument.array();
 }
 
-bool JsonHandler::savePlayersToFile(const std::vector<Player> &players, const QString &filePath) {
-    QJsonDocument doc(playersToJson(players));
-    QFile file(filePath);
-    if (!file.open(QIODevice::WriteOnly)) {
-        return false;
-    }
-    file.write(doc.toJson());
-    file.close();
-    return true;
-}
-
-bool JsonHandler::loadPlayerFromFile(Player &player, const QString &filePath) {
-    QFile file(filePath);
-    if (!file.open(QIODevice::ReadOnly)) {
-        return false;
-    }
-    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
-    file.close();
-    if (doc.isObject()) {
-        player = jsonToPlayer(doc.object());
-        return true;
-    }
-    return false;
-}
-
-bool JsonHandler::loadPlayersFromFile(std::vector<Player> &players, const QString &filePath) {
-    QFile file(filePath);
-    if (!file.open(QIODevice::ReadOnly)) {
-        return false;
-    }
-    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
-    file.close();
-    if (doc.isArray()) {
-        players = jsonToPlayers(doc.array());
-        return true;
-    }
-    return false;
+QString JsonHandler::jsonArrayToString(const QJsonArray& jsonArray) {
+    QJsonDocument jsonDocument(jsonArray);
+    return QString(jsonDocument.toJson(QJsonDocument::Compact));
 }

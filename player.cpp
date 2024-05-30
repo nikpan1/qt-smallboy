@@ -10,6 +10,34 @@ Player::Player(bool _isBot) {
     if (isBot) randomAction();
 }
 
+QJsonObject Player::toJson()
+{
+    QJsonObject result;
+    result["id"] = id;
+    result["isBot"] = isBot;
+    result["action"] = static_cast<int>(action);
+
+    result["szacun"] = szacun;
+    result["kasa"] = kasa;
+    result["bmw"] = bmw;
+    result["haracz"] = haracz;
+
+
+    return result; 
+}
+
+void Player::fromJson(QJsonObject json)
+{
+    id = json["id"].toInt();
+    isBot = json["isBot"].toBool();
+    action = static_cast<playerAction>(json["action"].toInt());
+
+    szacun = json["szacun"].toInt();
+    kasa = json["kasa"].toInt();
+    bmw = json["bmw"].toInt();
+    haracz = json["haracz"].toInt();
+}
+
 // Getter methods
 int Player::GetSzacun() const {
     return szacun;

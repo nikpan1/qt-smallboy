@@ -28,13 +28,14 @@ public:
     void smbConnectedToServer();
     void smbDisconnectedFromServer();
     void gotNewMesssage(QString msg);
+    void receivedSomething(QString msg);
 
 private slots:
     void on_actionExit_triggered();
     void on_pushButton_StartGameW_clicked();
     void on_pushButton_AddNewPlayerW_clicked();
     void onIsHostToggled(bool checked);
-    void gotNewMessage(QString msg);
+    void gotNewMessage(QString msg); 
 
 private:
     Ui::MainWindow *ui;

@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <QString>
+#include <QJsonObject>
 #include "Debug.h"
 #include <map>
 
@@ -53,6 +54,9 @@ public:
 
     Player();
     Player(bool _isBot);
+
+    QJsonObject toJson();
+    void fromJson(QJsonObject json);
 
 protected:
     int id = -1; // at initialization it always has -1, later is set by the server

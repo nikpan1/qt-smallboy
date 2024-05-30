@@ -14,15 +14,14 @@ class JsonHandler : public QObject {
 public:
     explicit JsonHandler(QObject *parent = nullptr);
 
-    QJsonObject playerToJson(const Player &player);
-    QJsonArray playersToJson(const std::vector<Player> &players);
-    Player jsonToPlayer(const QJsonObject &json);
-    std::vector<Player> jsonToPlayers(const QJsonArray &jsonArray);
+    QJsonArray playersToJson(std::vector<Player> players);
+    
+    void jsonToPlayers(QJsonArray jsonArray, std::vector<Player>& players);
+    void jsonToPlayers(QString jsonArray, std::vector<Player>& players);
 
-    bool savePlayerToFile(const Player &player, const QString &filePath);
-    bool savePlayersToFile(const std::vector<Player> &players, const QString &filePath);
-    bool loadPlayerFromFile(Player &player, const QString &filePath);
-    bool loadPlayersFromFile(std::vector<Player> &players, const QString &filePath);
+    QString jsonArrayToString(const QJsonArray& jsonArray);
+    QJsonArray stringToJSONArray(const QString& jsonString);
+
 };
 
 #endif // JSONHANDLER_H

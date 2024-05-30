@@ -54,11 +54,10 @@ void MainWindow::on_pushButton_StartGameW_clicked()
 
     if(!ui->isHost->isChecked()) { // connecting to a server
         _DEBUG("Client connnecting: " + ipAddress + ":" + QString::number(port));
-        // connect(client, &ClientStuff::hasReadSome, this, &MainWindow::receivedSomething);
+        connect(gameclient, &Gameclient::hasReadSome, this, &MainWindow::receivedSomething);
 
         gameclient = new Gameclient(ipAddress, port, this);
         gameclient->connect2host();
-        gameclient->sendToServer("Hello, server!");
 
         return;
     }
@@ -66,10 +65,14 @@ void MainWindow::on_pushButton_StartGameW_clicked()
         auto ip = QHostAddress(ipAddress);
         if (!gameserver->tcpServer->listen(ip, port))
         {
+            _DEBUG("Server failed to start");
             return;
         }
-
-        connect(gameserver->tcpServer, &QTcpServer::newConnection, gameserver, &Gameserver::newConnection);
+        else
+        {
+            _DEBUG("Server started");
+            connect(gameserver->tcpServer, &QTcpServer::newConnection, gameserver, &Gameserver::newConnection);
+        }
     }
 }
 
@@ -78,26 +81,10 @@ void MainWindow::on_pushButton_AddNewPlayerW_clicked()
     playerwidget* np = new playerwidget();
     playerlistArea->widget()->layout()->addWidget(np);
     players.push_back(np);
+
+    // get it going -> send message to server for ip
 }
 
-/*
-void MainWindow::on_pushButton_stopServer_clicked()
-{
-    if(_gameserver->tcpServer->isListening())
-    {
-        disconnect(_gameserver->tcpServer, &QTcpServer::newConnection, _gameserver, &gameserver::newConnection);
-
-        QList<QTcpSocket *> clients = _gameserver->getClients();
-        for(int i = 0; i < clients.count(); i++)
-        {
-            //server->sendToClient(clients.at(i), "Connection closed");
-            _gameserver->sendToClient(clients.at(i), "0");
-        }
-
-        _gameserver->tcpServer->close();
-    }
-}
-*/
 
 void MainWindow::onIsHostToggled(bool checked)
 {
@@ -115,6 +102,8 @@ void MainWindow::onIsHostToggled(bool checked)
 void MainWindow::smbConnectedToServer()
 {
     _DEBUG("Somebody has connected");
+    // send message to this connected client
+    // maybe assign unique id
 }
 
 void MainWindow::smbDisconnectedFromServer()
@@ -138,7 +127,13 @@ void MainWindow::setInitialValues()
     ui->PortW->setText("6537");
 }
 
+
+void MainWindow::receivedSomething(QString msg)
+{
+    _DEBUG("Received: " + msg);
+}
+
 void MainWindow::gotNewMessage(QString msg)
 {
-    _DEBUG(QString("New message: %1").arg(msg));
+    ui->log->setText(msg); 
 }
