@@ -3,6 +3,8 @@
 
 #include <QAbstractSocket>
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
 #include <QObject>
 #include <QString>
 #include <QTcpSocket>
@@ -14,7 +16,7 @@ class Client : public QObject {
   explicit Client(QString host, quint16 port, QObject *parent = nullptr);
   ~Client();
 
-  void sendToServer(QByteArray data);
+  void sendToServer(QJsonArray data);
 
  signals:
   void newMessageFromServerReceived(QString message);

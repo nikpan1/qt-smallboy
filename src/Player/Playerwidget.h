@@ -24,11 +24,16 @@ class Playerwidget : public QFrame, public Player {
   QComboBox *playerMoveComboBox() const;
   QPushButton *removePlayerButton() const;
 
-  virtual void Play(std::vector<Playerwidget*> players);
-  
+  virtual void Play(std::vector<Playerwidget *> players);
+
+ signals:
+  void playerActionSaved();
+
  public slots:
   void updatePlayerData();
   void disableInteractions();
+
+  void onMoveChanged(int index);
 
  private:
   QLabel *playerName;

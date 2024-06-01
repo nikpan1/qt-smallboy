@@ -2,7 +2,7 @@
 
 JsonHandler::JsonHandler(QObject* parent) : QObject(parent) {}
 
-QJsonObject JsonHandler::playerToJson(Player player) {
+QJsonObject JsonHandler::playerToJson(const Playerwidget& player) {
   QJsonObject result;
 
   result["id"] = player.GetID();
@@ -13,64 +13,47 @@ QJsonObject JsonHandler::playerToJson(Player player) {
   result["kasa"] = player.GetKasa();
   result["bmw"] = player.GetBMW();
   result["haracz"] = player.GetHaracz();
+  result["round"] = player.round;
 
   return result;
 }
 
-Player JsonHandler::jsonToPlayer(QJsonObject json) {
-  return Player((json["id"].toInt(), json["isBot"].toBool(),
-                 static_cast<playerAction>(json["action"].toInt()),
-                 json["kasa"].toInt(), json["szacun"].toInt(),
-                 json["bmw"].toInt(), json["haracz"].toInt()));
-}
-
-QJsonArray JsonHandler::playersToJson(std::vector<Player> players) {
-  QJsonArray jsonArray;
-  for (auto& player : players) {
-    jsonArray.append(playerToJson(player));
+QJsonArray JsonHandler::playersToJson(
+    const std::vector<Playerwidget*>& players) {
+  QJsonArray result;
+  for (const auto& player : players) {
+    result.append(playerToJson(*player));
   }
-  return jsonArray;
+
+  return result;
 }
 
-QJsonArray JsonHandler::playersToJson(std::vector<Playerwidget*> players) {
-  QJsonArray jsonArray;
-  for (auto& player : players) {
-    jsonArray.append(playerToJson(player));
-  }
-  return jsonArray;
+void JsonHandler::jsonToPlayer(const QJsonObject& json, Playerwidget& player) {
+  player.playerUpdate(json["id"].toInt(), json["isBot"].toBool(),
+                      static_cast<playerAction>(json["action"].toInt()),
+                      json["kasa"].toInt(), json["szacun"].toInt(),
+                      json["bmw"].toInt(), json["haracz"].toInt(),
+                      json["round"].toInt());
 }
 
-void JsonHandler::jsonToPlayers(QJsonArray jsonArray,
-                                std::vector<Player>& players) {
-  long unsigned int i = 0;
+void JsonHandler::jsonToPlayers(const QString& jsonData,
+                                std::vector<Playerwidget*>& players) {
+  QJsonDocument doc = QJsonDocument::fromJson(jsonData.toUtf8());
+  QJsonArray jsonArray = doc.array();
 
-  for (const auto& jsonValue : jsonArray) {
-    if (jsonValue.isObject()) {
-      if (i >= players.size()) {
-        players.push_back(Player());
+  quint64 pivot = 0;
+  for (const QJsonValue& value : jsonArray) {
+    if (value.isObject()) {
+      if (pivot >= players.size()) {
+        players.push_back(new Playerwidget());
+        players[pivot - 1]->layout()->addWidget(players[pivot]);
+        static_cast<QVBoxLayout*>(players[pivot - 1]->parentWidget()->layout())
+            ->addWidget(players[pivot]);
       }
 
-      players[i] = jsonToPlayer(jsonValue.toObject());
-      i++;
+      QJsonObject obj = value.toObject();
+      jsonToPlayer(obj, *players[pivot]);
+      pivot++;
     }
   }
-}
-
-void JsonHandler::jsonToPlayers(QString jsonArray,
-                                std::vector<Player>& players) {
-  QJsonArray jsonArr = stringToJSONArray(jsonArray);
-  jsonToPlayers(jsonArr, players);
-}
-
-QJsonArray JsonHandler::stringToJSONArray(const QString& jsonString) {
-  QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonString.toUtf8());
-  if (!jsonDocument.isArray()) {
-    return QJsonArray();
-  }
-  return jsonDocument.array();
-}
-
-QString JsonHandler::jsonArrayToString(const QJsonArray& jsonArray) {
-  QJsonDocument jsonDocument(jsonArray);
-  return QString(jsonDocument.toJson(QJsonDocument::Compact));
 }

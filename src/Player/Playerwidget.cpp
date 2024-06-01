@@ -20,12 +20,56 @@ QComboBox* Playerwidget::playerMoveComboBox() const { return playerMove; }
 QPushButton* Playerwidget::removePlayerButton() const { return removePlayer; }
 
 void Playerwidget::Play(std::vector<Playerwidget*> players) {
-    std::vector<Player*> playerVector;
-    playerVector.reserve(players.size()); // Reserve space to avoid multiple allocations
-    for (auto widget : players) {
-        playerVector.push_back(static_cast<Player*>(widget));
+  round++;
+
+  // 1. HARACZ
+  if (haracz > 0) {
+    kasa += haracz;
+  }
+
+  // 2. BMW
+  for (int i = 0; i < bmw; i++) {
+    if (kasa >= 2) {
+      kasa -= 2;
+      szacun += 3;
+    } else {
+      szacun -= 2;
     }
-    ((Player*)this)->Play(playerVector);
+  }
+
+  // 3. PLAYER ACTION
+  switch (action) {
+    case playerAction::lans:
+      szacun += 1;
+      break;
+    case playerAction::doRoboty:
+      kasa += 2;
+      break;
+    case playerAction::haracz:
+      // check if is possible to use haracz
+      if (CanUseHaracz()) {
+        kasa -= 4;
+        haracz += 1;
+      }
+      break;
+    case playerAction::bmw:
+      bmw += 1;
+      break;
+    case playerAction::iwan:
+      for (auto& pl : players) {
+        if (pl != this) {
+          pl->AddKasa(-1);
+        }
+      }
+      break;
+    default:
+#pragma _WARNING(Unknown action.)
+      break;
+  }
+
+  if (isBot) {
+    randomAction();
+  }
 }
 
 void Playerwidget::setupUi() {
@@ -39,23 +83,20 @@ void Playerwidget::setupUi() {
   emptyLabel = new QLabel(this);
   playerMove = new QComboBox(this);
 
-  playerMove->addItem("Szacun");
-  playerMove->addItem("Kasa");
+  playerMove->addItem("Lans");
+  playerMove->addItem("Do Roboty");
+  playerMove->addItem("Haracz");
   playerMove->addItem("BMW");
-  if (CanUseHaracz()) playerMove->addItem("Haracz");
-
+  playerMove->addItem("Iwan");
   playerMove->setCurrentIndex(0);
 
-  removePlayer = new QPushButton("Remove Player", this);
-  savePlayer = new QPushButton("Save Move", this);
+  connect(playerMove, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
+          &Playerwidget::onMoveChanged);
 
-  layout->addRow("PlayerId:", playerName);
-  layout->addRow(" ", emptyLabel);
+  layout->addRow("OwnerId:", playerName);
   layout->addRow("Player Move:", playerMove);
-  layout->addRow(savePlayer);
-  layout->addRow(removePlayer);
+  layout->addRow(" ", emptyLabel);
 
-  // Add additional labels in the second column
   for (int i = 0; i < 8; ++i) {
     QLabel* lb = new QLabel();
     stats.push_back(lb);
@@ -71,12 +112,24 @@ void Playerwidget::setupUi() {
   setLayout(layout);
 }
 
+void Playerwidget::onMoveChanged(int index) {
+  playerAction newAction =
+      static_cast<playerAction>(playerMove->currentIndex());
+  playerAction oldAction = this->action;
+  this->action = newAction;
+
+  if (oldAction != newAction) {
+    emit playerActionSaved();
+  }
+}
+
 void Playerwidget::updatePlayerData() {
   playerName->setText(QString::number(this->id));
   stats[0]->setText(QString::number(this->szacun));
   stats[1]->setText(QString::number(this->kasa));
   stats[2]->setText(QString::number(this->bmw));
   stats[3]->setText(QString::number(this->haracz));
+  playerMove->setCurrentIndex(static_cast<int>(this->action));
 }
 
 void Playerwidget::disableInteractions() { this->setEnabled(false); }

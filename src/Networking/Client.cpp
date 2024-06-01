@@ -11,6 +11,14 @@ Client::Client(QString host, quint16 port, QObject *parent) : QObject(parent) {
 
 Client::~Client() { socket.close(); }
 
+void Client::sendToServer(QJsonArray data) {
+  QJsonDocument doc(data);
+  QByteArray byteArray = doc.toJson();
+
+  socket.write(byteArray);
+  socket.flush();
+}
+
 void Client::connected() { qInfo() << "Connected!"; }
 
 void Client::disconnected() { qInfo() << "Disconnected"; }

@@ -7,7 +7,7 @@ It allows multiple clients to connect to a server and play the round based game 
 - **Multiplayer Gameplay**: The app enables multiple players to connect to the server and play the game simultaneously.
 - **Custom UI widget**: The project includes a custom widget for the Player class.
 - **Slots and signals**: The app is based on custom slots/signals manner.
-- **Cmake configuration and testing**: The project shows a simple example of a configured CMakelists file along with dependencies like *google tests* or qt::core.
+- **Cmake configuration and testing**: The project shows a simple example of a configured CMakelists file along with dependencies like *google tests*.
 
 
 ## Getting Started
@@ -22,8 +22,8 @@ To get started with the Mały Dresiarz Client-Server App, follow these steps:
 Make sure you have the necessary dependencies installed and configured before building and running the app.
 
 ## Preview
-![Image Description](docs/preview/app.png)
-
+![Image of the app](docs/preview/app.png)
+![Video showcasing the app](docs/preview/video.mp4)
 ## Resources
 
 The networking is based on a udemy course called - 'Qt 5 Core Advanced with C++' , visit the [GitHub repository](https://github.com/voidrealms/qt6-core-advanced/tree/main/section%204/qt6ca-4-32).

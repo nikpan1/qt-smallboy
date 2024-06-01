@@ -41,12 +41,12 @@ void Server::disconnected() {
     if (it->second == socket) {
       sockets.erase(it);
       break;
+
+      emit clientDisconnected(it->first);
     }
   }
 
   socket->deleteLater();
-
-  emit clientDisconnected();
 }
 
 void Server::readyRead() {
@@ -66,16 +66,17 @@ void Server::readyRead() {
 
 void Server::incomingConnection(qintptr socketDescriptor) {
   QTcpSocket* socket = new QTcpSocket(this);
+  int id = -1;
   if (socket->setSocketDescriptor(socketDescriptor)) {
     connect(socket, &QTcpSocket::disconnected, this, &Server::disconnected);
     connect(socket, &QTcpSocket::readyRead, this, &Server::readyRead);
 
-    sockets.emplace(assignId(), socket);
+    id = assignId();
+    sockets.emplace(id, socket);
+    emit clientConnected(id);
   } else {
     delete socket;
   }
-
-  emit clientConnected();
 }
 
 qint16 Server::assignId() { return idCounter++; }

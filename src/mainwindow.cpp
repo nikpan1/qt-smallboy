@@ -14,25 +14,17 @@ MainWindow::MainWindow(QWidget* parent)
           &MainWindow::on_pushButton_AddNewPlayerW_clicked);
   connect(ui->PlayRoundW, &QPushButton::clicked, this,
           &MainWindow::on_pushButton_PlayRoundW_clicked);
-  // this is temporary - adding a player 0
-  Playerwidget* np = new Playerwidget();
-  playerlistArea->widget()->layout()->addWidget(np);
-  players.push_back(np);
-  players[0]->disableInteractions();
-  // this is temporary
 }
 
 void MainWindow::on_pushButton_StartGameW_clicked() {
   QString ipAddress = ui->IPaddressW->text();
   qint16 port = ui->PortW->text().toShort();
 
-  if (!ui->isHost->isChecked()) {  // CLIENT
+  if (!ui->isHost->isChecked()) {  // ! -- CLIENT -- !
     client = new Client(ipAddress, port);
     connect(client, &Client::newMessageFromServerReceived, this,
             &MainWindow::newMessageFromServerReceived);
-
-    ui->StartGameW->setEnabled(false);
-  } else {  // SERVER
+  } else {  // ! -- SERVER -- !
     server = new Server(ipAddress, port);
     connect(server, &Server::newMessageFromClientReceived, this,
             &MainWindow::newMessageFromClientReceived);
@@ -43,45 +35,100 @@ void MainWindow::on_pushButton_StartGameW_clicked() {
   }
 
   ui->StartGameW->setEnabled(false);
+  ui->PlayRoundW->setEnabled(ui->isHost->isChecked());
+  initializedConnection = true;
 }
 
 void MainWindow::on_pushButton_PlayRoundW_clicked() {
-    foreach (Playerwidget* player, players) {
-        player->Play(players);
-        server->sendToAll(JsonHandler::playersToJson(players));
-    }
+  foreach (Playerwidget* player, players) {
+    player->Play(players);
+  }
+
+  round++;
+  refreshPlayerList();
+
+  if (!initializedConnection) {
+    return;
+  }
+
+  server->sendToAll(JsonHandler::playersToJson(players));
+  someoneWon();
 }
 
 void MainWindow::newMessageFromServerReceived(QString message) {
-    //JsonHandler::jsonToPlayers(message, players);
+  qDebug() << "newMessageFromClientReceived: " << message;
+  if (message == "[]") return;
 
-    // NA TYM SKOŃCZYŁEM
-    // trzeba poprawić jsonHandler
-    // przy wysyłaniu updateować indexy = -1
-    // jeśli odbierze tablice większą niż była, niech automatycznie doda obiekty do gui etc 
+  JsonHandler::jsonToPlayers(message, players);
+  foreach (Playerwidget* player, players) {
+    disconnect(player);
+    connect(player, &Playerwidget::playerActionSaved, this, &MainWindow::Sync);
+    connect(player, &Playerwidget::playerActionSaved, this,
+            &MainWindow::refreshPlayerList);
+  }
 
+  round = players[0]->round;
+  someoneWon();
+  refreshPlayerList();
 }
 
 void MainWindow::newMessageFromClientReceived(QString message,
-                                              qint16 clientId) {}
+                                              qint16 clientId) {
+  qDebug() << "newMessageFromClientReceived: " << message;
+  if (message == "[]") return;
 
-void MainWindow::clientConnected() {}
+  JsonHandler::jsonToPlayers(message, players);
 
-void MainWindow::clientDisconnected() {}
+  // update id
+  foreach (Playerwidget* player, players) {
+    if (player->GetID() == -1) {
+      player->SetID(clientId);
+    }
+    disconnect(player);
+    connect(player, &Playerwidget::playerActionSaved, this, &MainWindow::Sync);
+    connect(player, &Playerwidget::playerActionSaved, this,
+            &MainWindow::refreshPlayerList);
+  }
+
+  server->sendToAll(JsonHandler::playersToJson(players));
+  refreshPlayerList();
+}
+
+void MainWindow::clientConnected(qint16 clientId) {
+  server->sendToClient(clientId, JsonHandler::playersToJson(players));
+}
+
+void MainWindow::clientDisconnected(qint16 clientId) {}
 
 void MainWindow::on_pushButton_AddNewPlayerW_clicked() {
   Playerwidget* np = new Playerwidget();
+
   playerlistArea->widget()->layout()->addWidget(np);
   players.push_back(np);
 
-  // get it going -> send message to server for ip
+  if (!initializedConnection) {
+    return;
+  }
+
+  if (ui->isHost->isChecked()) {
+    np->SetID(0);
+    server->sendToAll(JsonHandler::playersToJson(players));
+  } else {
+    np->SetID(-1);
+    client->sendToServer(JsonHandler::playersToJson(players));
+  }
+
+  someoneWon();
+  refreshPlayerList();
 }
 
 void MainWindow::onIsHostToggled(bool checked) {
   if (checked) {
     ui->StartGameW->setText("Start Server");
+    ui->PlayRoundW->setEnabled(true);
   } else {
     ui->StartGameW->setText("Connect to Server");
+    ui->PlayRoundW->setEnabled(false);
   }
 }
 
@@ -96,6 +143,46 @@ void MainWindow::setInitialValues() {
   // default newtoring values
   ui->IPaddressW->setText("0.0.0.0");
   ui->PortW->setText("4900");
+
+  // default player
+  Playerwidget* np = new Playerwidget();
+  playerlistArea->widget()->layout()->addWidget(np);
+  players.push_back(np);
+}
+
+void MainWindow::refreshPlayerList() {
+  ui->roundNumLabelW->setText("Round: " + QString::number(round));
+  foreach (Playerwidget* player, players) {
+    player->updatePlayerData();
+  }
+}
+
+void MainWindow::Sync() {
+  if (!initializedConnection) return;
+
+  if (client != nullptr) {
+    client->sendToServer(JsonHandler::playersToJson(players));
+  } else {
+    server->sendToAll(JsonHandler::playersToJson(players));
+  }
+}
+
+void MainWindow::someoneWon() {
+  if (round >= 10) {
+    int max = 0;
+    Playerwidget* winner = nullptr;
+    foreach (Playerwidget* player, players) {
+      player->setDisabled(true);
+      if (player->GetSzacun() > max) {
+        max = player->GetSzacun();
+        winner = player;
+      }
+    }
+
+    winner->setEnabled(true);
+    ui->PlayRoundW->setEnabled(false);
+    ui->roundNumLabelW->setText("We got a winner!");
+  }
 }
 
 MainWindow::~MainWindow() { delete ui; }

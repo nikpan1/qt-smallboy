@@ -16,16 +16,12 @@ class JsonHandler : public QObject {
  public:
   explicit JsonHandler(QObject* parent = nullptr);
 
-  static QJsonObject playerToJson(Player player);
-  static Player jsonToPlayer(QJsonObject json);
-  static QJsonArray playersToJson(std::vector<Player> players);
-  static QJsonArray playersToJson(std::vector<Playerwidget*> players);
+  static QJsonObject playerToJson(const Playerwidget& player);
+  static QJsonArray playersToJson(const std::vector<Playerwidget*>& players);
 
-  static void jsonToPlayers(QJsonArray jsonArray, std::vector<Player>& players);
-  static void jsonToPlayers(QString jsonArray, std::vector<Player>& players);
-
-  static QString jsonArrayToString(const QJsonArray& jsonArray);
-  static QJsonArray stringToJSONArray(const QString& jsonString);
+  static void jsonToPlayer(const QJsonObject& json, Playerwidget& player);
+  static void jsonToPlayers(const QString& jsonData,
+                            std::vector<Playerwidget*>& players);
 };
 
 #endif  // JSONHANDLER_H

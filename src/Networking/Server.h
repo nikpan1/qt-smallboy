@@ -30,8 +30,8 @@ class Server : public QTcpServer {
 
  signals:
   void newMessageFromClientReceived(QString message, qint16 clientId);
-  void clientConnected();
-  void clientDisconnected();
+  void clientConnected(qint16 clientId);
+  void clientDisconnected(qint16 clientId);
 
  protected:
   void incomingConnection(qintptr socketDescriptor) override;
@@ -39,7 +39,7 @@ class Server : public QTcpServer {
 
  private:
   std::map<qint16, QTcpSocket *> sockets;
-  qint16 idCounter = 0;
+  qint16 idCounter = 1;
 
  private:
   qint16 assignId();
