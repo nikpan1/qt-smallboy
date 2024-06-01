@@ -16,7 +16,7 @@ To get started with the Mały Dresiarz Client-Server App, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/nikpan1/qt-smallboy`
 2. Create a build directory `mkdir -p build && cd build/`
-3. Build the app: `cmake ../src/`
+3. Build the app: `cmake .. && make`
 4. Run the client: `./qt-smallboy`
 
 Make sure you have the necessary dependencies installed and configured before building and running the app.
