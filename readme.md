@@ -27,3 +27,5 @@ Make sure you have the necessary dependencies installed and configured before bu
 ## Resources
 
 The networking is based on a udemy course called - 'Qt 5 Core Advanced with C++' , visit the [GitHub repository](https://github.com/voidrealms/qt6-core-advanced/tree/main/section%204/qt6ca-4-32).
+The server was tested using siege.
+The code was formated with clang-format with the default google style.
