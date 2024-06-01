@@ -53,7 +53,7 @@ void MainWindow::on_pushButton_PlayRoundW_clicked() {
 }
 
 void MainWindow::newMessageFromServerReceived(QString message) {
-    JsonHandler::jsonToPlayers(message, players);
+    //JsonHandler::jsonToPlayers(message, players);
 
     // NA TYM SKOŃCZYŁEM
     // trzeba poprawić jsonHandler
